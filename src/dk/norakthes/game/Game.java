@@ -53,6 +53,7 @@ public class Game extends Canvas implements Runnable, Serializable {
 
     @Override
     public void run() {
+        this.requestFocus();
         // Standard Java GameLoop
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
