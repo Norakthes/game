@@ -16,6 +16,7 @@ public class Game extends Canvas implements Runnable, Serializable {
 
     private Random r;
     private Handler handler;
+    private HUD hud;
 
     @Serial
     private static final long serialVersionUID = 6230805852286428605L;
@@ -26,6 +27,8 @@ public class Game extends Canvas implements Runnable, Serializable {
         this.addKeyListener(new KeyInput(handler));
 
         new Window(WIDTH, HEIGHT, "Poggers", this);
+
+        hud = new HUD();
 
 
         r = new Random();
@@ -85,6 +88,7 @@ public class Game extends Canvas implements Runnable, Serializable {
 
     private void tick() {
         handler.tick();
+        hud.tick();
     }
 
     private void render() {
@@ -100,6 +104,8 @@ public class Game extends Canvas implements Runnable, Serializable {
         g.fillRect(0,0, WIDTH, HEIGHT);
 
         handler.render(g);
+
+        hud.render(g);
 
         g.dispose();
         bs.show();
