@@ -9,6 +9,7 @@ import java.util.Random;
 public class Game extends Canvas implements Runnable, Serializable {
     // Sets the window resolution
     public static final int WIDTH = 1280, HEIGHT = 720 /*WIDTH / 12 * 9*/;
+    public static final int GAMEWIDTH = 1264, GAMEHEIGHT = 681;
 
     private Thread thread;
     private boolean running = false;
@@ -30,7 +31,8 @@ public class Game extends Canvas implements Runnable, Serializable {
         r = new Random();
 
         handler.addObject(new Player(WIDTH/2-32,HEIGHT/2-32,ID.Player));
-        handler.addObject(new Player(WIDTH/2+64,HEIGHT/2-32,ID.Player2));
+        for (int i = 0; i < 20; i++)
+        handler.addObject(new BasicEnemy(r.nextInt(GAMEWIDTH),r.nextInt(GAMEHEIGHT),ID.BasicEnemy));
     }
 
     public synchronized void start() {
@@ -100,6 +102,12 @@ public class Game extends Canvas implements Runnable, Serializable {
 
         g.dispose();
         bs.show();
+    }
+
+    public static int clamp(int var, int min, int max) {
+        if (var >= max) {return var = max;}
+        else if (var <= min) {return var = min;}
+        else {return var;}
     }
 
     public static void main(String[] args) {
