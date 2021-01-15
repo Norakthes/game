@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Game extends Canvas implements Runnable, Serializable {
     // Sets the window resolution
-    public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
+    public static final int WIDTH = 1280, HEIGHT = 720 /*WIDTH / 12 * 9*/;
 
     private Thread thread;
     private boolean running = false;
