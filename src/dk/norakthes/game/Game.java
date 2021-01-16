@@ -14,9 +14,9 @@ public class Game extends Canvas implements Runnable, Serializable {
     private Thread thread;
     private boolean running = false;
 
-    private Random r;
-    private Handler handler;
-    private HUD hud;
+    private final Random r;
+    private final Handler handler;
+    private final HUD hud;
 
     @Serial
     private static final long serialVersionUID = 6230805852286428605L;
@@ -33,9 +33,9 @@ public class Game extends Canvas implements Runnable, Serializable {
 
         r = new Random();
 
-        handler.addObject(new Player(WIDTH/2-32,HEIGHT/2-32,ID.Player));
-        for (int i = 0; i < 20; i++)
-        handler.addObject(new BasicEnemy(r.nextInt(GAMEWIDTH),r.nextInt(GAMEHEIGHT),ID.BasicEnemy));
+        handler.addObject(new Player(GAMEWIDTH/2-32,GAMEHEIGHT/2-32,ID.Player, handler));
+        for (int i = 0; i < 0; i++)
+        handler.addObject(new BasicEnemy(r.nextInt(GAMEWIDTH),r.nextInt(GAMEHEIGHT),ID.BasicEnemy, handler));
     }
 
     public synchronized void start() {

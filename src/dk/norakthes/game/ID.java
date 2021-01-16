@@ -2,6 +2,7 @@ package dk.norakthes.game;
 
 public enum ID {
 
-    Player(),
-    BasicEnemy;
+    Player,
+    BasicEnemy,
+    ParticleTrail;
 }
