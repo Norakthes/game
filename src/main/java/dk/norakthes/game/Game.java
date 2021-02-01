@@ -32,7 +32,7 @@ public class Game extends Canvas implements Runnable, Serializable {
         r = new Random();
 
         Player player = new Player(GAMEWIDTH/2-32,(GAMEHEIGHT/4)*3-32,ID.Player, handler);
-        player.setCollision(false);
+        player.setCollision(true);
 
         handler.addObject(player);
 
@@ -133,6 +133,8 @@ public class Game extends Canvas implements Runnable, Serializable {
         bs.show();
     }
 
+    //Doesn't allow a number to go over a specific amount
+    //Used when you don't want the player to get through the screen border
     public static int clamp(int var, int min, int max) {
         if (var >= max) {return var = max;}
         else if (var <= min) {return var = min;}

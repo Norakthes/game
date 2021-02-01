@@ -1,7 +1,7 @@
 package dk.norakthes.game;
 
 import java.awt.*;
-import java.util.Random;
+
 
 public class Player extends GameObject {
     private final int playerHeight = 32, playerWidth = 32;
@@ -30,8 +30,8 @@ public class Player extends GameObject {
         x += velX;
         y += velY;
 
-        x = Game.clamp(x, 0, Game.GAMEWIDTH-playerWidth);
-        y = Game.clamp(y, 0, Game.GAMEHEIGHT-playerHeight);
+        x = Game.clamp(x, 0, Game.GAMEWIDTH-playerWidth+8);
+        y = Game.clamp(y, 0, Game.GAMEHEIGHT-playerHeight+8);
 
         //handler.addObject(new ParticleTrail(x, y, Color.white, playerWidth-12, playerHeight-12, 0.01f, ID.ParticleTrail, handler));
 
@@ -49,14 +49,10 @@ public class Player extends GameObject {
                     if (getBounds().intersects(tempObject.getBounds())){
                         //Collision logic
                         if (!invulnFrames){
-                            HUD.HEALTH -= 20;
+                            HUD.HEALTH -= 10;
                         }
-                        invulnFrames = true;
                         if (HUD.HEALTH == 0) {
                             System.exit(0);
-                        }
-                        while (invulnFrames) {
-
                         }
                     }
                 }
