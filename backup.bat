@@ -1,0 +1,1 @@
+java -Dfile.encoding=UTF-8 -classpath ./target/classes dk.norakthes.game.Game
