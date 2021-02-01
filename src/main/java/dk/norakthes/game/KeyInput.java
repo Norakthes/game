@@ -22,19 +22,19 @@ public class KeyInput extends KeyAdapter {
             // shift = 64
             // control = 128
             if (tempObject.getId() == ID.Player) {
-                //Key events for player 1
+                //Key events for player
 
                 switch (key + modifier) {
-                    case 64 + KeyEvent.VK_W: { tempObject.setVelY(-10); break;}
+                    case 64 + KeyEvent.VK_W: tempObject.setVelY(-10); break;
                     case 64 + KeyEvent.VK_A: tempObject.setVelX(-10); break;
                     case 64 + KeyEvent.VK_S: tempObject.setVelY(10); break;
                     case 64 + KeyEvent.VK_D: tempObject.setVelX(10); break;
 
                     case 64 + KeyEvent.VK_SHIFT: {
-                        if (tempObject.getVelY(-5)) tempObject.setVelY(-10);
-                        if (tempObject.getVelX(-5)) tempObject.setVelX(-10);
-                        if (tempObject.getVelY(5)) tempObject.setVelY(10);
-                        if (tempObject.getVelX(5)) tempObject.setVelX(10);
+                        if (tempObject.isVelY(-5)) tempObject.setVelY(-10);
+                        if (tempObject.isVelX(-5)) tempObject.setVelX(-10);
+                        if (tempObject.isVelY(5)) tempObject.setVelY(10);
+                        if (tempObject.isVelX(5)) tempObject.setVelX(10);
                         break;
                     }
 

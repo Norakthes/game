@@ -4,25 +4,38 @@ import java.awt.*;
 
 
 public class Player extends GameObject {
-    private final int playerHeight = 32, playerWidth = 32;
+    private int playerHeight = 32, playerWidth = 32;
 
     private boolean collision = true;
 
     Handler handler;
 
+    /**
+     * @param x width of the player
+     * @param y height of the player
+     * @param id the id of the player
+     * @param handler specifies which handler to handle the object
+     */
     public Player(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         this.handler = handler;
 
     }
 
+    /**
+     * @return Returns a rectangle with the width and height of the player. This is used for collision detection
+     */
     public Rectangle getBounds() {
         return new Rectangle(x, y, playerWidth, playerHeight);
     }
 
+    /**
+     * @param scale Scales the player to the nearest whole number * the scale
+     */
     @Override
     public void setScale(float scale) {
-
+        this.playerWidth = Math.round(this.playerWidth * scale);
+        this.playerHeight = Math.round(this.playerHeight * scale);
     }
 
     @Override
@@ -49,7 +62,7 @@ public class Player extends GameObject {
                     if (getBounds().intersects(tempObject.getBounds())){
                         //Collision logic
                         if (!invulnFrames){
-                            HUD.HEALTH -= 10;
+                            HUD.HEALTH -= 5;
                         }
                         if (HUD.HEALTH == 0) {
                             System.exit(0);

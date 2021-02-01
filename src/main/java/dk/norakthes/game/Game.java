@@ -33,24 +33,15 @@ public class Game extends Canvas implements Runnable, Serializable {
 
         Player player = new Player(GAMEWIDTH/2-32,(GAMEHEIGHT/4)*3-32,ID.Player, handler);
         player.setCollision(true);
-
         handler.addObject(player);
-
-        //BasicEnemy basicEnemy = new BasicEnemy(GAMEWIDTH/3,(GAMEHEIGHT/4)*3,0,0,ID.BasicEnemy,handler);
-        //handler.addObject(basicEnemy);
-        //for (int i = 0; i < 1; i++) handler.addObject(new BasicEnemy(r.nextInt(GAMEWIDTH),r.nextInt(GAMEHEIGHT), 1, 1,ID.BasicEnemy, handler));
 
         long timer = System.currentTimeMillis();
         while (running) {
             if (System.currentTimeMillis() - timer > 0) {
+                //adds a new enemy every 100ms
                 timer += 100;
 
-//                float scale = 0f;
-//                scale += 1.1f;
-//                basicEnemy.setScale(scale);
-
                 handler.addObject(new BasicEnemy(r.nextInt(GAMEWIDTH), 0, 0, 10, ID.BasicEnemy, handler));
-                //System.out.println(handler.object.size());
             }
         }
     }
@@ -108,7 +99,7 @@ public class Game extends Canvas implements Runnable, Serializable {
         hud.tick();
     }
 
-    public static final Rectangle bottom = new Rectangle(-10, GAMEHEIGHT-50, GAMEWIDTH+10,GAMEHEIGHT);
+    public static final Rectangle bottom = new Rectangle(-10, GAMEHEIGHT+50, GAMEWIDTH+10,GAMEHEIGHT);
 
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
@@ -127,7 +118,7 @@ public class Game extends Canvas implements Runnable, Serializable {
 
         hud.render(g);
 
-        g2d.draw(bottom);
+        //g2d.draw(bottom);
 
         g.dispose();
         bs.show();

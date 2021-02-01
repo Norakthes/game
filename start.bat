@@ -1,1 +1,2 @@
-java -jar target/game-1.0-SNAPSHOT.jar
+java -jar game-1.0-SNAPSHOT.jar
+pause
